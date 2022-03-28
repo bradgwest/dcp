@@ -12,8 +12,7 @@ python -m dcp.problems.20220325
 
 ## Development
 
-```
-
+```sh
 pip install -r requirements_dev.txt
 make format
 make qa
