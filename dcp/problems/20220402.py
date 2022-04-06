@@ -48,6 +48,7 @@ if __name__ == "__main__":
         tc([3, 4, 2], 5),
         tc([2, 4, 6, 2, 5], 13),
         tc([5, 1, 1, 5], 10),
+        tc([1, 10, 1], 10),
     )
 
     harness(cases, lambda t: solution_space_light(t.nums))
