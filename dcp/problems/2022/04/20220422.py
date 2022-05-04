@@ -1,17 +1,38 @@
-"""This problem was asked by Facebook.
+"""This problem was asked by Amazon.
 
-You are given an array of non-negative integers that represents a
-two-dimensional elevation map where each element is unit-width wall and the
-integer is the height. Suppose it will rain and all spots between two walls
-get filled up.
+Run-length encoding is a fast and simple method of encoding strings. The basic
+idea is to represent repeated successive characters as a single count and
+character. For example, the string "AAAABBBCCDAA" would be encoded as
+"4A3B2C1D2A".
 
-Compute how many units of water remain trapped on the map in O(N) time and
-O(1) space.
-
-For example, given the input [2, 1, 2], we can hold 1 unit of water in the
-middle.
-
-Given the input [3, 0, 1, 3, 0, 5], we can hold 3 units in the first index,
-2 in the second, and 3 in the fourth index (we cannot hold 5 since it would
-run off to the left), so we can trap 8 units of water.
+Implement run-length encoding and decoding. You can assume the string to be
+encoded have no digits and consists solely of alphabetic characters. You can
+assume the string to be decoded is valid.
 """
+
+
+def encode(word):
+    out = []
+    current = None
+    count = 0
+    for char in word:
+        if current is None or char == current:
+            count += 1
+        else:
+            out.extend([str(count), current])
+            count = 1
+        current = char
+    out.extend([str(count), current])
+    return "".join(out)
+
+
+def decode(word):
+    out = []
+    for i in range(0, len(word), 2):
+        n, char = word[i : i + 2]
+        out.extend([char] * int(n))
+    return "".join(out)
+
+
+word = "AAAABBBCCDAA"
+assert decode(encode(word)) == word
