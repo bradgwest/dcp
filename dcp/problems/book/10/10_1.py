@@ -22,5 +22,11 @@ def has_cycle(graph):
     return False
 
 
-graph = {1: [2, 3], 2: [4], 3: [], 4: []}
+# graph = {1: [2, 3], 2: [4], 3: [], 4: []}
+graph = {
+    "JFK": ["SFO", "LAX"],
+    "SFO": ["ORL"],
+    "ORL": ["JFK", "LAX", "DFW"],
+    "LAX": ["DFW"],
+}
 print(has_cycle(graph))
